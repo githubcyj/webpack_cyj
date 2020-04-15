@@ -20,6 +20,27 @@ webpack只能处理JavaScript的文件，需要借助loader将less，es6的impor
 - less
 - html
 - jpg,png
+- 其他资源
+
+## css处理
+### css抽取为单独的文件
+- MiniCssExtractPlugin
+
+### css兼容性处理
+- loader：postcss-loader
+- plugin：postcss-preset-env
+
+### 压缩css
+- plugin: OptimizeCssAssetsWebpackPlugin
+
+## js处理
+### js语法检查
+- eslint-loader eslint
+
+### js兼容性处理
+- 基本的js兼容性处理，只能转换基本语法，而promise不能转换：@babel/preset-env
+- 全部的js兼容性处理，会将所有的兼容性代码引入，但是实际上只需要解决部分兼容性问题：@babel/polyfill(不需要单独配置，只要在使用的文件中引入即可)
+- 按需加载：core-js
 
 ## package.json文件的启动命令
 - development: webpack ./src/index_dev.js -o ./dist/bundle.js --mode=development

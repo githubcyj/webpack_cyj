@@ -1,3 +1,6 @@
+/**
+ * 开发环境
+ */
 const {resolve} = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 // const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -48,7 +51,8 @@ module.exports = {
                     //给图片进行重命名
                     //[hash:10]去图片的hash的前十位
                     //[ext]取文件原来的扩展名
-                    name: '[hash:10].[ext]'
+                    name: '[hash:10].[ext]',
+                    outputPath: 'imgs'
                 }
             },
             {
