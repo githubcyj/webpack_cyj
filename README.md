@@ -16,10 +16,10 @@ webpack只能处理JavaScript的文件，需要借助loader将less，es6的impor
     - production
 
 ## 打包的文件类型
-- css
-- less
+- css、less
+- js
 - html
-- jpg,png
+- jpg、png、gif
 - 其他资源
 
 ## css处理
@@ -34,6 +34,7 @@ webpack只能处理JavaScript的文件，需要借助loader将less，es6的impor
 - plugin: OptimizeCssAssetsWebpackPlugin
 
 ## js处理
+先执行eslint，再执行Babel。原因是：兼容性处理之后，有些会转成es5语法，var变量就会报错
 ### js语法检查
 - eslint-loader eslint
 
@@ -41,6 +42,24 @@ webpack只能处理JavaScript的文件，需要借助loader将less，es6的impor
 - 基本的js兼容性处理，只能转换基本语法，而promise不能转换：@babel/preset-env
 - 全部的js兼容性处理，会将所有的兼容性代码引入，但是实际上只需要解决部分兼容性问题：@babel/polyfill(不需要单独配置，只要在使用的文件中引入即可)
 - 按需加载：core-js
+
+## webpack优化配置
+### 开发环境性能优化
+- 代码构建速度
+HRM 热模块替换
+一个模块发生变化，只会重新打包这个模块（不会打包所有模块）
+    样式文件    可以使用hrm功能，因为style-loader内部实现了
+    js文件      默认没有hrm功能
+    html文件    默认没有hrm功能，同时会导致问题，html文件不会热更新了。
+                解决方案：修改entry入口，引入html文件
+                只有一个html文件，不需要做hrm功能
+- 代码调试
+source-map提供源代码到构建代码之后映射，技术，（如果构建代码错了，可以通过映射追踪到源代码错误）
+
+
+### 生成环境性能优化
+- 代码构建速度
+- 代码运行性能
 
 ## package.json文件的启动命令
 - development: webpack ./src/index_dev.js -o ./dist/bundle.js --mode=development

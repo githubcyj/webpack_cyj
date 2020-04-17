@@ -89,6 +89,9 @@ module.exports = {
         compress: true,
         port: 3000,
         //自动打开浏览器
-        open: true
-    }
+        open: true,
+        //开启HRM功能
+        hot: true
+    },
+    devtool: 'source-map'
 };
