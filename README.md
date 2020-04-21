@@ -56,9 +56,12 @@ HRM 热模块替换
 - 代码调试
 source-map提供源代码到构建代码之后映射，技术，（如果构建代码错了，可以通过映射追踪到源代码错误）
 
-### 生成环境性能优化
+### 生产环境性能优化
 - 代码构建速度
+    - oneOf
+    - babel缓存
 - 代码运行性能
+    - 缓存（hash-chunkhash-contenthash）
 
 ## package.json文件的启动命令
 - development: webpack ./src/index_dev.js -o ./dist/bundle.js --mode=development
